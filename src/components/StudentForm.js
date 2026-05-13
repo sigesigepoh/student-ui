@@ -30,28 +30,41 @@ const StudentForm = ({ fetchStudents, editingStudent, setEditingStudent }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "5px" }}>
             <h3>{editingStudent ? 'Edit Student' : 'Add New Student'}</h3>
             <input 
                 placeholder="First Name" 
                 value={student.firstname} 
                 onChange={(e) => setStudent({...student, firstname: e.target.value})} 
                 required 
+                style={{ marginRight: "10px", padding: "8px" }}
             />
             <input 
                 placeholder="Last Name" 
                 value={student.lastname} 
                 onChange={(e) => setStudent({...student, lastname: e.target.value})} 
                 required 
+                style={{ marginRight: "10px", padding: "8px" }}
             />
             <input 
                 placeholder="Course" 
                 value={student.course} 
                 onChange={(e) => setStudent({...student, course: e.target.value})} 
                 required 
+                style={{ marginRight: "10px", padding: "8px" }}
             />
-            <button type="submit">{editingStudent ? 'Update' : 'Add'}</button>
-            {editingStudent && <button type="button" onClick={() => setEditingStudent(null)}>Cancel</button>}
+            <button type="submit" style={{ marginRight: "10px", padding: "8px 15px" }}>
+                {editingStudent ? 'Update' : 'Add'}
+            </button>
+            {editingStudent && (
+                <button 
+                    type="button" 
+                    onClick={() => setEditingStudent(null)}
+                    style={{ padding: "8px 15px", background: "gray", color: "white" }}
+                >
+                    Cancel
+                </button>
+            )}
         </form>
     );
 };
